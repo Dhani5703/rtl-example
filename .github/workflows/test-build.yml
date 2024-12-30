@@ -21,4 +21,16 @@ jobs:
             # test 실행
             - name: Run Test
               run: npm run test
+
     #2. build
+    build: 
+        runs-on: ubuntu-latest
+        steps:  
+          - name: Get Codes
+            uses: actions/checkout@v4
+
+          - name: Install Dependencies
+            run: npm install
+
+          - name: Run Build
+            run: npm run build
