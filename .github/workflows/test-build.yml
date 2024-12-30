@@ -13,4 +13,12 @@ jobs:
             #코드를 가져옴
             - name: Get Codes
               uses: actions/checkout@v4
+
+            #의존성 파일들 설치
+            - name: Install Dependencies
+              run: npm install
+
+            # test 실행
+            - name: Run Test
+              run: npm run test
     #2. build
