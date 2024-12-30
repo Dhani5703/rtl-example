@@ -3,8 +3,9 @@ name: First workflow
 on: workflow_dispatch
 
 jobs:
-
+  #job.id job의 이름 임의의 이름
   first-jobs:
+    #
 
     runs-on: ubuntu-latest
 
