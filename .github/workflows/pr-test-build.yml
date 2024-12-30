@@ -1,0 +1,36 @@
+name: PR Test And Build
+on: 
+    pull_request:
+        branches: [main]
+        types: [opened, reopened, synchronize]
+
+    workflow_dispatch:
+        
+jobs:
+  # 1. 테스트 Job
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run test
+        run: npm run test
+
+  # 2. 빌드 Job
+  build:
+    # test Job이 끝나야 build Job이 실행되도록 설정
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run build
+        run: npm run build        
