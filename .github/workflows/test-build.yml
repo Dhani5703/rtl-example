@@ -24,6 +24,8 @@ jobs:
 
     #2. build
     build: 
+        # test job이 완료된 뒤에 build job이 시작되도록 설정
+        needs: [test]
         runs-on: ubuntu-latest
         steps:  
           - name: Get Codes
